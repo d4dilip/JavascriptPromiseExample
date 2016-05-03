@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<!-- fallback for browsers which do not support promise -->
+<script src="es6-promise.min.js"></script>
+<script src="syncLib.js"></script>
+<script src="asyncLib.js"></script>
+<script>
+    
+   
+function onSuccess(response)
+{
+    document.getElementById("divresponse").innerHTML = response;
+}
+function onError(error)
+{
+     document.getElementById("divresponse").innerHTML = error.message; 
+}
+function demoCallPromiseFn(params){
+    document.getElementById("divresponse").innerHTML = "computing...."; 
+    var objsyncLib=asyncLib();
+    objsyncLib.CallfnSyncLib(params).then(onSuccess, onError);
+   
+}
+
+</script>
+
+<body onload="javascript:demoCallPromiseFn(null);">
+    <div id="divresponse">
+    </div>
+</body>
+
+</html>
